@@ -21,16 +21,14 @@ function lengthOfLongestSubstring(s: string): number {
         found += s[i]
     }
 
-    largest = found.length > largest ? found.length : largest
-
-    return largest
+    return found.length > largest ? found.length : largest
 };
 
 // @lc code=end
 
 /* working: 5/12/2022
  * Accepted
- ** 987/987 cases passed (93 ms)
- ** Your runtime beats 88.95 % of typescript submissions
- ** Your memory usage beats 66.45 % of typescript submissions (48.1 MB)
+ ** 987/987 cases passed (91 ms)
+ ** Your runtime beats 90.23 % of typescript submissions
+ ** Your memory usage beats 62.6 % of typescript submissions (48.4 MB)
  */
