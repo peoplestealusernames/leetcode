@@ -8,8 +8,10 @@
 function lengthOfLongestSubstring(s: string): number {
     let largest = 0;
 
-    for (let i = 0; i < s.length; i++)
-        largest = Math.max(untilRepeat(s.substring(i, s.length)), largest)
+    for (let i = 0; i < s.length; i++) {
+        const run = untilRepeat(s.substring(i, s.length))
+        if (run > largest) largest = run
+    }
 
     return largest
 };
@@ -30,7 +32,7 @@ function untilRepeat(s: string): number {
 
 /* working: 5/12/2022
  * Accepted
- ** 987/987 cases passed (967 ms)
- ** Your runtime beats 5.98 % of typescript submissions
- ** Your memory usage beats 5.13 % of typescript submissions (97.8 MB)
+ ** 987/987 cases passed (636 ms)
+ ** Your runtime beats 12.73 % of typescript submissions
+ ** Your memory usage beats 6.66 % of typescript submissions (68.6 MB)
  */
