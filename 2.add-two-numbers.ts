@@ -18,33 +18,37 @@ class ListNode {
 // @lc code=start
 
 function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | null {
-    const val = unpack(l1) + unpack(l2)
-    //const val = unpack(l1)
+    let carry = 0;
+    let parentNode: ListNode | null = null
+    let hostNode: ListNode | null = null
 
-    return pack(val)
-    //return new ListNode(val, null)
-};
+    while (l1 || l2) {
+        let val = (l1?.val | 0) + (l2?.val | 0) + carry
+        carry = Math.floor(val / 10)
+        val = val - carry * 10
 
-function pack(val: number): ListNode | null {
-    let l = null
-    let arr = val.toString().split("")
-    for (let i = 0; i < arr.length; i++) {
-        l = new ListNode(Number(arr[i]), l)
-    }
-    return l
-}
+        const nl = new ListNode(val)
+        if (parentNode)
+            parentNode.next = nl
 
-function unpack(l: ListNode | null): number {
-    let ret = 0
-    let i = 0
-    while (l) {
-        ret += l.val * Math.pow(10, i)
-        l = l.next
-        i++
+        parentNode = nl
+        if (!hostNode)
+            hostNode = nl
+
+        l1 = l1?.next; l2 = l2?.next
     }
 
-    return ret
+    if (carry)
+        parentNode.next = new ListNode(carry)
+
+    return hostNode
 }
 
 // @lc code=end
 
+/* First working 5/12/2022
+ * Accepted
+ ** 1568/1568 cases passed (115 ms)
+ ** Your runtime beats 83.03 % of typescript submissions
+ ** Your memory usage beats 83.32 % of typescript submissions (47.9 MB)
+ */
