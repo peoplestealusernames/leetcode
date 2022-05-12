@@ -17,14 +17,14 @@ function lengthOfLongestSubstring(s: string): number {
 };
 
 function untilRepeat(s: string): number {
-    let found: { [key: string]: boolean } = {}
+    let found = ""
     let i = 0
 
     for (; i < s.length; i++)
-        if (found[s[i]])
+        if (found.includes(s[i]))
             return i
         else
-            found[s[i]] = true
+            found += s[i]
 
     return i
 }
@@ -32,7 +32,7 @@ function untilRepeat(s: string): number {
 
 /* working: 5/12/2022
  * Accepted
- ** 987/987 cases passed (636 ms)
- ** Your runtime beats 12.73 % of typescript submissions
- ** Your memory usage beats 6.66 % of typescript submissions (68.6 MB)
+ ** 987/987 cases passed (534 ms)
+ ** Your runtime beats 15.35 % of typescript submissions
+ ** Your memory usage beats 18.65 % of typescript submissions (50.6 MB)
  */
