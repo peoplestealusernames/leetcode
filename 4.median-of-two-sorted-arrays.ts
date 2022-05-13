@@ -6,10 +6,9 @@
 
 // @lc code=start
 function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
-    const combine = nums1.concat(...nums2).sort((a, b) => a - b)
+    const combine = nums1.concat(nums2).sort((a, b) => a - b)
 
     const mid = (combine.length - 1) / 2
-    console.log(combine);
 
     if (mid % 1 == 0)
         return combine[mid]
@@ -23,7 +22,7 @@ function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
 
 /*
  * Accepted
- ** 2094/2094 cases passed (382 ms)
- ** Your runtime beats 5.33 % of typescript submissions
- ** Your memory usage beats 5.33 % of typescript submissions (53.8 MB)
+ ** 2094/2094 cases passed (152 ms)
+ ** Your runtime beats 60.49 % of typescript submissions
+ ** Your memory usage beats 28.27 % of typescript submissions (49.1 MB)
  */
