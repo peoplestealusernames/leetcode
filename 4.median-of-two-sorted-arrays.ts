@@ -10,19 +10,13 @@ function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
 
     const mid = (combine.length - 1) / 2
 
-    if (mid % 1 == 0)
-        return combine[mid]
-    else {
-        let n = combine[Math.floor(mid)]
-        n += combine[Math.ceil(mid)]
-        return n / 2
-    }
+    return (combine[Math.floor(mid)] + combine[Math.ceil(mid)]) / 2
 };
 // @lc code=end
 
 /*
  * Accepted
- ** 2094/2094 cases passed (118 ms)
- ** Your runtime beats 81.34 % of typescript submissions
- ** Your memory usage beats 53.65 % of typescript submissions (48.5 MB)
+ ** 2094/2094 cases passed (111 ms)
+ ** Your runtime beats 87.49 % of typescript submissions
+ ** Your memory usage beats 66.05 % of typescript submissions (48.1 MB)
  */
