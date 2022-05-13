@@ -8,27 +8,30 @@
 function lengthOfLongestSubstring(s: string): number {
     let largest = 0;
     let start = 0;
+    let found: { [key: number]: number } = {}
 
     // 0 1 2 3 4 5 6 7
     // a b c a b c b b
 
     for (let i = 0; i < s.length; i++) {
-        const at = s.indexOf(s[i], start)
-        if (at != -1 && at < i) {
-            largest = i - start > largest ? i - start : largest
-            start = at + 1
+        const c = s.charCodeAt(i)
+        const at = found[c] + 1
+        if (at > start) {
+            largest = (i - start) > largest ? i - start : largest
+            start = at
         }
+        found[c] = i
     }
 
     //return largest
-    return s.length - start > largest ? s.length - start : largest
+    return (s.length - start) > largest ? s.length - start : largest
 };
 
 // @lc code=end
 
 /* working: 5/13/2022
  * Accepted
- ** 987/987 cases passed (76 ms)
- ** Your runtime beats 98.98 % of typescript submissions
- ** Your memory usage beats 98.79 % of typescript submissions (44.8 MB)
+ ** 987/987 cases passed (81 ms)
+ ** Your runtime beats 96.7 % of typescript submissions
+ ** Your memory usage beats 99.76 % of typescript submissions (44.7 MB)
  */
