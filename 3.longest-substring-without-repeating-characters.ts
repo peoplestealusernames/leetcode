@@ -17,21 +17,23 @@ function lengthOfLongestSubstring(s: string): number {
         const c = s.charCodeAt(i)
         const at = found[c] + 1
         if (at > start) {
-            largest = (i - start) > largest ? i - start : largest
+            const leng = i - start
+            largest = leng > largest ? leng : largest
             start = at
         }
         found[c] = i
     }
 
     //return largest
-    return (s.length - start) > largest ? s.length - start : largest
+    const leng = (s.length - start)
+    return leng > largest ? leng : largest
 };
 
 // @lc code=end
 
 /* working: 5/13/2022
  * Accepted
- ** 987/987 cases passed (81 ms)
- ** Your runtime beats 96.7 % of typescript submissions
- ** Your memory usage beats 99.76 % of typescript submissions (44.7 MB)
+ ** 987/987 cases passed (69 ms)
+ ** Your runtime beats 99.61 % of typescript submissions
+ ** Your memory usage beats 89.67 % of typescript submissions (45.6 MB)
  */
