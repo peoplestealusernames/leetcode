@@ -6,29 +6,23 @@
 
 // @lc code=start
 function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
-    //const combine = nums1.concat(nums2).sort((a, b) => a > b ? 1 : -1)
-    let combine: number[] = []
+    let combine: number[] = new Array(nums1.length + nums2.length)
     let x: number = 0
     let y: number = 0
+    let i: number = 0
 
-    while (x < nums1.length && y < nums2.length) {
+    while (x < nums1.length && y < nums2.length)
         if (nums1[x] < nums2[y]) {
-            combine.push(nums1[x])
-            x++
-        } else {
-            combine.push(nums2[y])
-            y++
-        }
-    }
+            combine[i++] = nums1[x++]
+        } else
+            combine[i++] = nums2[y++]
 
-    for (; x < nums1.length; x++)
-        combine.push(nums1[x])
+    while (x < nums1.length) combine[i++] = nums1[x++]
+    while (y < nums2.length) combine[i++] = nums2[y++]
 
-    for (; y < nums2.length; y++)
-        combine.push(nums2[y])
+    //console.log(combine);
 
-
-    const mid = (combine.length - 1) / 2
+    const mid = (i - 1) / 2
 
     return (combine[Math.floor(mid)] + combine[Math.ceil(mid)]) / 2
 };
@@ -36,7 +30,7 @@ function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
 
 /*
  * Accepted
- ** 2094/2094 cases passed (105 ms)
- ** Your runtime beats 93.16 % of typescript submissions
- ** Your memory usage beats 76.59 % of typescript submissions (47.5 MB)
+ ** 2094/2094 cases passed (90 ms)
+ ** Your runtime beats 99.3 % of typescript submissions
+ ** Your memory usage beats 98.71 % of typescript submissions (46.4 MB)
  */
